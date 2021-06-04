@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './Formulario.module.css';
+import useSelect from '../hooks/useSelect';
 
 const Formulario = () => {
+
+  // Utilizar Custom Hook
+  const [categoria, SelectNoticias] = useSelect();
+
   return ( 
     <div className={`${styles.buscador} row`}>
       <div className="clo s12 m8 offset-m2">
@@ -15,6 +20,8 @@ const Formulario = () => {
               value="Buscar"
             />
           </div>
+
+          <SelectNoticias />
         </form>
       </div>
     </div>
