@@ -1,8 +1,11 @@
 import Header from './components/Header';
 import Formulario from './components/Formulario';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
 function App() {
+
+  const [select, guardarSelect] = useState();
+
   return (
     <Fragment>
       <Header 
@@ -10,7 +13,9 @@ function App() {
       />
 
       <div className="container white">
-        <Formulario />
+        <Formulario  
+          guardarSelect={guardarSelect}
+        />
       </div>
     </Fragment>
   );
