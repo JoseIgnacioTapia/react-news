@@ -1,10 +1,26 @@
 import Header from './components/Header';
 import Formulario from './components/Formulario';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 function App() {
 
-  const [select, guardarSelect] = useState();
+  // Definir la categoria y noticias
+  const [categoria, guardarCategoria] = useState('');
+
+  const [noticias, guardarNoticias] = useState([]);
+
+  useEffect(() => {
+    const consultarAPI = async () => {
+      const url = `https://newsapi.org/v2/top-headlines?country=ar&category=${categoria}&apiKey=4dc2f56899c94121919a5ba5b43406d8`;
+
+      const respuesta = await fetch(url);
+      const noticias = await respuesta.json();
+      guardarNoticias(noticias.articles);
+    }
+
+    consultarAPI();
+
+  }, [categoria]);
 
   return (
     <Fragment>
@@ -14,7 +30,7 @@ function App() {
 
       <div className="container white">
         <Formulario  
-          guardarSelect={guardarSelect}
+          guardarCategoria={guardarCategoria}
         />
       </div>
     </Fragment>

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Formulario.module.css';
 import useSelect from '../hooks/useSelect';
 
-const Formulario = ({ guardarSelect }) => {
+const Formulario = ({ guardarCategoria }) => {
 
   const OPCIONES = [
     { value: 'general', label: 'General' },
@@ -21,7 +21,7 @@ const Formulario = ({ guardarSelect }) => {
   const buscarNoticias = e => {
     e.preventDefault();
 
-    guardarSelect(categoria);
+    guardarCategoria(categoria);
   }
 
   return ( 
